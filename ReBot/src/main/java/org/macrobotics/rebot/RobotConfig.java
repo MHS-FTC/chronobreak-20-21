@@ -1,6 +1,7 @@
 package org.macrobotics.rebot;
 
-public class RobotConfig {
+import java.util.ArrayList;
 
-    public DcMotor a;
+public abstract class RobotConfig {
+    ArrayList<Module> modules;
 }
