@@ -2,6 +2,8 @@ package org.macrobotics.rebot;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.macrobotics.rebot.module.ModuleProperties;
+
 import java.util.ArrayList;
 
 public abstract class RobotConfig {
@@ -10,7 +12,8 @@ public abstract class RobotConfig {
 
     /**
      * Override this to initialize the robot and add modules.
-     * The only
+     * The only time this should be called is on robot initialization, it's probably going to break
+     * stuff if you call it anywhere else.
      *
      * @param hwMap Robot hardware map for initialization.
      */
@@ -21,7 +24,7 @@ public abstract class RobotConfig {
      *
      * @param m The module to add.
      */
-    private void addModule(Module m) {
+    protected void addModule(Module m) {
         modules.add(m);
     }
 
@@ -38,5 +41,28 @@ public abstract class RobotConfig {
             }
         }
         return null;
+    }
+
+    /**
+     * Updates module data.
+     * Call every loop to signal module updates - sensors, motors, etc.
+     */
+    public void update() {
+        for (Module m : modules) {
+            if (m.properties.contains(ModuleProperties.NEEDS_UPDATE)){
+                m.update();
+            }
+        }
+    }
+
+    /**
+     * Stops all modules.
+     * Should stop everything the robot is doing - if something keeps going, it's that module's
+     * fault.
+     */
+    public void stop() {
+        for (Module m : modules) {
+            m.stop();
+        }
     }
 }
