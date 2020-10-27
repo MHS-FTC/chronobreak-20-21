@@ -1,0 +1,3 @@
+[submodule "ReBot"]
+	path = ReBot
+	url = https://github.com/MHS-FTC/ReBot.git
