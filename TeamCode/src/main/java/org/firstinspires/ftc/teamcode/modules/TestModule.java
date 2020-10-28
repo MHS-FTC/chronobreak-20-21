@@ -16,11 +16,6 @@ public class TestModule extends Module {
     }
 
     @Override
-    public void update() {
-
-    }
-
-    @Override
     public void stop() {
         motor.setPower(0);
     }
