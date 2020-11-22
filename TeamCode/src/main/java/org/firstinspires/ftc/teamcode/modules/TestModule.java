@@ -11,7 +11,10 @@ public class TestModule extends Module {
 
     public TestModule(HardwareMap hwMap, String motorName) {
         motor = hwMap.dcMotor.get(motorName);
+    }
 
+    @Override
+    public void start() {
         motor.setPower(1);
     }
 
