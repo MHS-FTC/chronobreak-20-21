@@ -21,6 +21,6 @@ class HardwareTest extends RobotConfig {
 
         addModule(new IntegratingGyroscopeModule(hwMap, "gyro"));
 
-        addModule(new VuforiaModule(API_KEY));
+        addModule(new VuforiaModule(hwMap, API_KEY));
     }
 }
