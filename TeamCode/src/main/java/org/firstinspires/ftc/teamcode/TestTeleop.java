@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
 import org.macrobotics.rebot.RobotConfig;
+import org.macrobotics.rebot.vuforia.VuforiaModule;
+import org.macrobotics.rebot.vuforia.VuforiaTrackableSet;
 
 @TeleOp(name = "Test Teleop")
 public class TestTeleop extends OpMode {
@@ -25,6 +27,7 @@ public class TestTeleop extends OpMode {
     @Override
     public void start() {
         robot.start();
+        robot.getModule(VuforiaModule.class).setUpTrackableSet(VuforiaTrackableSet.ULTIMATE_GOAL);
     }
 
     @Override
