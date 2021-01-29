@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.modules.IntegratingGyroscopeModule;
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
+import org.firstinspires.ftc.teamcode.modules.ServoMagazineModule;
+import org.firstinspires.ftc.teamcode.modules.YeeterModule;
 import org.macrobotics.rebot.RobotConfig;
 import org.macrobotics.rebot.vuforia.VuforiaModule;
 
@@ -19,8 +21,12 @@ class HardwareTest extends RobotConfig {
         addModule(new MecanumDriveModule(hwMap, "left_front_drive", "left_back_drive",
                 "right_front_drive", "right_back_drive"));
 
-        addModule(new IntegratingGyroscopeModule(hwMap, "gyro"));
+        addModule(new YeeterModule(hwMap, "yeeter"));
 
-        addModule(new VuforiaModule(hwMap, API_KEY));
+        addModule(new ServoMagazineModule(hwMap, "magServo"));
+
+        //addModule(new IntegratingGyroscopeModule(hwMap, "gyro"));
+
+        //addModule(new VuforiaModule(hwMap, API_KEY));
     }
 }
