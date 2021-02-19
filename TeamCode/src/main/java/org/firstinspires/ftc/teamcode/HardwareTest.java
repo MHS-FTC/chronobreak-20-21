@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.modules.BeltIntakeModule;
 import org.firstinspires.ftc.teamcode.modules.IntegratingGyroscopeModule;
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
 import org.firstinspires.ftc.teamcode.modules.ServoMagazineModule;
@@ -23,7 +24,9 @@ class HardwareTest extends RobotConfig {
 
         addModule(new YeeterModule(hwMap, "yeeter"));
 
-        addModule(new ServoMagazineModule(hwMap, "magServo"));
+        addModule(new BeltIntakeModule(hwMap, "beltIntake"));
+
+        //addModule(new ServoMagazineModule(hwMap, "magServo"));
 
         //addModule(new IntegratingGyroscopeModule(hwMap, "gyro"));
 
