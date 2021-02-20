@@ -14,6 +14,9 @@ import org.macrobotics.rebot.Module;
  */
 public class MecanumDriveModule extends Module {
 
+    private double wheelDiameter = 100.0;
+    private double ticksPerMotorRev = 383.6;
+
     public enum MotorPosition {
         LEFT_FRONT,
         LEFT_BACK,
@@ -84,6 +87,22 @@ public class MecanumDriveModule extends Module {
 
         setPowerRaw(r * Math.cos(theta) + turn, r * Math.sin(theta) + turn,
                 r * Math.sin(theta) - turn, r * Math.cos(theta) - turn);
+    }
+
+    public void driveDistance(double distance, double power) {
+        int tickTarget = (int) (distance / (wheelDiameter * Math.PI) * ticksPerMotorRev);
+
+        left_front.setTargetPosition(tickTarget);
+        left_back.setTargetPosition(tickTarget);
+        right_front.setTargetPosition(tickTarget);
+        right_back.setTargetPosition(tickTarget);
+
+        setPowerRaw(power, power, power, power);
+
+        left_front.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        left_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        right_front.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        right_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     @Override
