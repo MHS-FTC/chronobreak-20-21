@@ -6,11 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.modules.BeltIntakeModule;
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
-import org.firstinspires.ftc.teamcode.modules.ServoMagazineModule;
 import org.firstinspires.ftc.teamcode.modules.YeeterModule;
 import org.macrobotics.rebot.RobotConfig;
-import org.macrobotics.rebot.vuforia.VuforiaModule;
-import org.macrobotics.rebot.vuforia.VuforiaTrackableSet;
 
 @TeleOp(name = "Test Teleop")
 public class TestTeleop extends OpMode {

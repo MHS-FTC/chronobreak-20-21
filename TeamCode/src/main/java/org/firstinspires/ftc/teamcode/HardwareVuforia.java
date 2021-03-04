@@ -2,9 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.macrobotics.rebot.RobotConfig;
-import org.macrobotics.rebot.vuforia.VuforiaModule;
+import org.macrobotics.rebot.modules.vuforia.VuforiaModule;
 
 public class HardwareVuforia extends RobotConfig {
 

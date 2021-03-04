@@ -3,12 +3,9 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.modules.BeltIntakeModule;
-import org.firstinspires.ftc.teamcode.modules.IntegratingGyroscopeModule;
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
-import org.firstinspires.ftc.teamcode.modules.ServoMagazineModule;
 import org.firstinspires.ftc.teamcode.modules.YeeterModule;
 import org.macrobotics.rebot.RobotConfig;
-import org.macrobotics.rebot.vuforia.VuforiaModule;
 
 class HardwareTest extends RobotConfig {
 

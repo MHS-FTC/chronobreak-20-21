@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.macrobotics.rebot.vuforia.VuforiaModule;
-import org.macrobotics.rebot.vuforia.VuforiaTrackableSet;
+import org.macrobotics.rebot.modules.vuforia.VuforiaModule;
+import org.macrobotics.rebot.modules.vuforia.VuforiaTrackableSet;
 
 @TeleOp()
 public class VuforiaTeleop extends OpMode {
