@@ -39,9 +39,9 @@ public class TestTeleop extends OpMode {
     @Override
     public void loop() {
         robot.update();
-        robot.getModule(MecanumDriveModule.class).drive(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+        robot.getModule(MecanumDriveModule.class).drive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
-        robot.getModule(BeltIntakeModule.class).setPowerRaw((gamepad1.dpad_up ? 1 : 0) - (gamepad1.dpad_down ? 1 : 0));
+        robot.getModule(BeltIntakeModule.class).setPowerRaw(gamepad1.left_trigger * 0.75);
 
         robot.getModule(YeeterModule.class).setPowerRaw((gamepad1.right_trigger > 0.5 ? 1 : 0)
             + (gamepad1.right_bumper ? nudgeSpeed : 0)   // right nudge

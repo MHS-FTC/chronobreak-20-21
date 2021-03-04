@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.macrobotics.rebot.Module;
+import org.macrobotics.rebot.module.ModuleProperties;
+
+import java.util.EnumSet;
 
 /**
  * A Module designed to control a mecanum drive system.
@@ -16,6 +19,7 @@ public class MecanumDriveModule extends Module {
 
     private double wheelDiameter = 100.0;
     private double ticksPerMotorRev = 383.6;
+    private double gearReduction = 2;
 
     public enum MotorPosition {
         LEFT_FRONT,
@@ -25,6 +29,8 @@ public class MecanumDriveModule extends Module {
     }
 
     private final DcMotor left_front, left_back, right_front, right_back;
+
+    private boolean running = false;
 
     /**
      * Create a new MecanumDriveModule using the four strings as the motor names.
@@ -90,7 +96,12 @@ public class MecanumDriveModule extends Module {
     }
 
     public void driveDistance(double distance, double power) {
-        int tickTarget = (int) (distance / (wheelDiameter * Math.PI) * ticksPerMotorRev);
+        int tickTarget = (int) (distance * gearReduction * ticksPerMotorRev / (wheelDiameter * Math.PI));
+
+        left_front.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        right_front.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         left_front.setTargetPosition(tickTarget);
         left_back.setTargetPosition(tickTarget);
@@ -103,10 +114,34 @@ public class MecanumDriveModule extends Module {
         left_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right_front.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        running = true;
+    }
+
+    @Override
+    public void update() {
+        if (running) {
+            if (left_front.isBusy() && left_back.isBusy() &&
+                    right_front.isBusy() && right_back.isBusy()) {
+                getRobot().getTelemetry().addData("Pos", left_back.getCurrentPosition());
+                getRobot().getTelemetry().addData("TPos", left_back.getTargetPosition());
+            } else {
+                setPowerRaw(0, 0, 0, 0);
+                left_front.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                left_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                right_front.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                right_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                running = false;
+            }
+        }
     }
 
     @Override
     public void stop() {
         setPowerRaw(0, 0, 0, 0);
+    }
+
+    public EnumSet<ModuleProperties> getProperties() {
+        return EnumSet.of(ModuleProperties.NEEDS_UPDATE);
     }
 }

@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.HardwareTest;
@@ -17,14 +18,19 @@ public class TestAutonomous extends OpMode {
     public void init() {
         robot.init(hardwareMap);
         robot.setTelemetry(telemetry);
+
+        robot.getModule(MecanumDriveModule.class).setMotorDirection(
+                MecanumDriveModule.MotorPosition.LEFT_FRONT, DcMotorSimple.Direction.REVERSE);
+        robot.getModule(MecanumDriveModule.class).setMotorDirection(
+                MecanumDriveModule.MotorPosition.LEFT_BACK, DcMotorSimple.Direction.REVERSE);
     }
 
     public void start() {
-        robot.getModule(MecanumDriveModule.class).driveDistance(2134, 1);
+        robot.getModule(MecanumDriveModule.class).driveDistance(1854, 0.6);
     }
 
     @Override
     public void loop() {
-
+        robot.update();
     }
 }
