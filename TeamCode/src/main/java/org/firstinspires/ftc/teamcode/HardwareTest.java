@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.modules.BeltIntakeModule;
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
+import org.firstinspires.ftc.teamcode.modules.WobbleGoalArm;
 import org.firstinspires.ftc.teamcode.modules.YeeterModule;
 import org.macrobotics.rebot.RobotConfig;
 
@@ -22,6 +23,8 @@ class HardwareTest extends RobotConfig {
         addModule(new YeeterModule(hwMap, "yeeter"));
 
         addModule(new BeltIntakeModule(hwMap, "beltIntake"));
+
+        addModule(new WobbleGoalArm(hwMap, "grabber", "arm"));
 
         //addModule(new ServoMagazineModule(hwMap, "magServo"));
 
