@@ -15,7 +15,7 @@ public class VuforiaTeleop extends OpMode {
     public void init() {
         robot.init(hardwareMap);
         robot.setTelemetry(telemetry);
-        robot.getModule(VuforiaModule.class).setUpTrackableSet(VuforiaTrackableSet.ULTIMATE_GOAL);
+        robot.getModule(VuforiaModule.class).setupTrackableSet(VuforiaTrackableSet.ULTIMATE_GOAL);
     }
 
     @Override

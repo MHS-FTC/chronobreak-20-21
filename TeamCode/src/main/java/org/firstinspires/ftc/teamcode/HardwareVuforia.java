@@ -15,6 +15,6 @@ public class HardwareVuforia extends RobotConfig {
 
     @Override
     public void init(HardwareMap hwMap) {
-        addModule(new VuforiaModule(hwMap, API_KEY, "webcam"));
+        addModule(new VuforiaModule(hwMap, API_KEY));
     }
 }
