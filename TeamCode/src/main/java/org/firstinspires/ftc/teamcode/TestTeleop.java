@@ -79,8 +79,6 @@ public class TestTeleop extends OpMode {
             grabberPos = 1;
         } else if (gamepad1.b) {
             grabberPos = -1;
-        } else {
-            grabberPos = 0;
         }
 
         robot.getModule(WobbleGoalArm.class).setPositionRaw(grabberPos);
