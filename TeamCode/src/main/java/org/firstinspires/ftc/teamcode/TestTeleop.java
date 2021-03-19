@@ -73,7 +73,7 @@ public class TestTeleop extends OpMode {
             - (gamepad2.right_bumper ? nudgeSpeed : 0)   // right nudge
             + (gamepad2.left_bumper  ? nudgeSpeed : 0)); // left nudge
 
-        robot.getModule(WobbleGoalArm.class).setPowerRaw(((gamepad1.dpad_down ? 0.5 : 0) - (gamepad1.dpad_up ? 0.75 : 0)) * (gamepad1.right_bumper ? 0.5 : 1) );
+        robot.getModule(WobbleGoalArm.class).setPowerRaw(((gamepad1.dpad_down ? 0.75 : 0) - (gamepad1.dpad_up ? 0.75 : 0)) * (gamepad1.right_bumper ? 0.5 : 1) );
 
         if (gamepad1.a) {
             grabberPos = 1;

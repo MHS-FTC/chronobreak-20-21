@@ -24,7 +24,7 @@ class HardwareTest extends RobotConfig {
 
         addModule(new BeltIntakeModule(hwMap, "beltIntake"));
 
-        addModule(new WobbleGoalArm(hwMap, "grabber", "arm"));
+        addModule(new WobbleGoalArm(hwMap, "top_grabber", "bottom_grabber", "arm"));
 
         //addModule(new ServoMagazineModule(hwMap, "magServo"));
 

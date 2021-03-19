@@ -3,8 +3,11 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.macrobotics.rebot.modules.vuforia.VuforiaModule;
 import org.macrobotics.rebot.modules.vuforia.VuforiaTrackableSet;
+
+import java.util.Arrays;
 
 @TeleOp()
 public class VuforiaTeleop extends OpMode {
@@ -26,6 +29,6 @@ public class VuforiaTeleop extends OpMode {
     @Override
     public void loop() {
         robot.update();
-        telemetry.addData("pos", robot.getModule(VuforiaModule.class).getRobotPosition());
+        telemetry.addData("pos", robot.getCurrPos());
     }
 }

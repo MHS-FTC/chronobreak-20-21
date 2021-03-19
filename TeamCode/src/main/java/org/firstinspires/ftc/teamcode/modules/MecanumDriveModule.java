@@ -3,10 +3,9 @@ package org.firstinspires.ftc.teamcode.modules;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
-import org.macrobotics.rebot.Module;
 import org.macrobotics.rebot.module.ModuleProperties;
+import org.macrobotics.rebot.modules.general.DirectionalDriveModule;
 
 import java.util.EnumSet;
 
@@ -15,7 +14,7 @@ import java.util.EnumSet;
  * Uses four motors, one on each corner with Mecanum wheels attached to provide omnidirectional
  * movement, as well as turning.
  */
-public class MecanumDriveModule extends Module {
+public class MecanumDriveModule extends DirectionalDriveModule {
 
     private double wheelDiameter = 100.0;
     private double ticksPerMotorRev = 383.6;
@@ -95,7 +94,7 @@ public class MecanumDriveModule extends Module {
                 r * Math.sin(theta) - turn, r * Math.cos(theta) - turn);
     }
 
-    public void driveDistance(double distance, double power) {
+    public void driveDistance(double distance) {
         int tickTarget = (int) (distance * gearReduction * ticksPerMotorRev / (wheelDiameter * Math.PI));
 
         left_front.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -108,7 +107,7 @@ public class MecanumDriveModule extends Module {
         right_front.setTargetPosition(tickTarget);
         right_back.setTargetPosition(tickTarget);
 
-        setPowerRaw(power, power, power, power);
+        setPowerRaw(speed, speed, speed, speed);
 
         left_front.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         left_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);

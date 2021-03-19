@@ -3,9 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.HardwareTest;
 import org.firstinspires.ftc.teamcode.modules.MecanumDriveModule;
 import org.macrobotics.rebot.RobotConfig;
 
@@ -26,7 +24,7 @@ public class TestAutonomous extends OpMode {
     }
 
     public void start() {
-        robot.getModule(MecanumDriveModule.class).driveDistance(1854, 0.6);
+        robot.getModule(MecanumDriveModule.class).driveDistance(1854);
     }
 
     @Override

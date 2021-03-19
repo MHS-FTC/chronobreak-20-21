@@ -8,12 +8,13 @@ import org.macrobotics.rebot.Module;
 
 public class WobbleGoalArm extends Module {
 
-    Servo servo;
+    Servo top, bottom;
 
     DcMotor arm;
 
-    public WobbleGoalArm(HardwareMap hwMap, String servoName, String armName) {
-        servo = hwMap.servo.get(servoName);
+    public WobbleGoalArm(HardwareMap hwMap, String topName, String bottomName, String armName) {
+        top = hwMap.servo.get(topName);
+        bottom = hwMap.servo.get(bottomName);
         arm = hwMap.dcMotor.get(armName);
     }
 
@@ -22,6 +23,7 @@ public class WobbleGoalArm extends Module {
     }
 
     public void setPositionRaw(double pos) {
-        servo.setPosition(pos);
+        top.setPosition(pos);
+        bottom.setPosition(1 - pos);
     }
 }
